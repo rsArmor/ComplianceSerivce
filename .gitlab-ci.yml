@@ -1,0 +1,16 @@
+include:
+  - project: 'kubernetes/meta'
+    file: 'docker/dotnet-build.yml'
+
+stages:
+  - docker
+  
+variables:
+  DOCKER_BUILD_DIR: ComplianceService
+  DOCKER_BUILD_CONTEXT: .
+  BUILD_ARGS: '--build-arg BANK_PFX=$BANK_PFX'
+
+docker build:
+  only:
+    refs:
+      - dev

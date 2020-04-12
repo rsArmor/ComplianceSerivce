@@ -1,0 +1,303 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "Сервис проверки контрагентов с целью ПОД/ФТ",
+    "contact" : {
+      "name" : "rbronnikov@alfaleasing.ru"
+    },
+    "version" : "1.0.2-oas3"
+  },
+  "servers" : [ {
+    "url" : "/"
+  } ],
+  "tags" : [ {
+    "name" : "СheckContractor",
+    "description" : "Проверка контрагентов"
+  }, {
+    "name" : "CheckDocument",
+    "description" : "Проверка клиента через сервис недействительных паспортов"
+  } ],
+  "paths" : {
+    "/CheckOrganization/" : {
+      "post" : {
+        "tags" : [ "СheckContractor" ],
+        "summary" : "Получить информацию о проверке Юридического лица в сервисе Альфа-Банка",
+        "operationId" : "ChekOrganization",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "array",
+                "items" : {
+                  "$ref" : "#/components/schemas/baseParams"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Информация о проверке",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ContractorCheckResult"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    },
+    "/CheckEntrepreneur/" : {
+      "post" : {
+        "tags" : [ "СheckContractor" ],
+        "summary" : "Получить информацию о проверке ИП в сервисе Альфа-Банка",
+        "operationId" : "CheckEntrepreneur",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "array",
+                "items" : {
+                  "$ref" : "#/components/schemas/IndividualParams"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Информация о проверке",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ContractorCheckResult"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    },
+    "/CheckIndividual/" : {
+      "post" : {
+        "tags" : [ "СheckContractor" ],
+        "summary" : "Получить информацию о проверке Физ. лица в сервисе Альфа-Банка",
+        "operationId" : "CheckIndividual",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "array",
+                "items" : {
+                  "$ref" : "#/components/schemas/IndividualParams"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Информация о проверке",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ContractorCheckResult"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    },
+    "/CheckIdentityCard/" : {
+      "post" : {
+        "tags" : [ "CheckDocument" ],
+        "summary" : "Проверка клиента через сервис недействительных паспортов",
+        "operationId" : "CheckIdentityCard",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "array",
+                "items" : {
+                  "$ref" : "#/components/schemas/IdentityCard"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Информация о проверке",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/IdentityCardCheckResult"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "baseParams" : {
+        "type" : "object",
+        "properties" : {
+          "externalSystemCode" : {
+            "maxLength" : 50,
+            "type" : "string",
+            "description" : "Код внешней системы",
+            "example" : "ELMA"
+          },
+          "inn" : {
+            "maxLength" : 10,
+            "type" : "string",
+            "description" : "ИНН",
+            "example" : "123456789012"
+          }
+        }
+      },
+      "IndividualParams" : {
+        "type" : "object",
+        "properties" : {
+          "firstName" : {
+            "maxLength" : 50,
+            "type" : "string",
+            "example" : "Петр"
+          },
+          "middleName" : {
+            "maxLength" : 50,
+            "type" : "string",
+            "example" : "Сергеевич"
+          },
+          "lastName" : {
+            "maxLength" : 50,
+            "type" : "string",
+            "example" : "Петров"
+          },
+          "dateBirthDay" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        },
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/baseParams"
+        } ]
+      },
+      "ContractorCheckResult" : {
+        "type" : "object",
+        "properties" : {
+          "checkName" : {
+            "maxLength" : 200,
+            "type" : "string",
+            "example" : "Наименование проверки"
+          },
+          "description" : {
+            "maxLength" : 500,
+            "type" : "string",
+            "example" : "Описание проверки"
+          },
+          "riskCodes" : {
+            "maxLength" : 200,
+            "type" : "string",
+            "example" : "Коды риска"
+          },
+          "isSucces" : {
+            "type" : "boolean",
+            "description" : "dsdads",
+            "example" : true
+          },
+          "contractorName" : {
+            "type" : "string",
+            "example" : "ООО Хлеб и Воробушки"
+          }
+        },
+        "example" : {
+          "isSucces" : true,
+          "description" : "Описание проверки",
+          "contractorName" : "ООО Хлеб и Воробушки",
+          "riskCodes" : "Коды риска",
+          "checkName" : "Наименование проверки"
+        }
+      },
+      "IdentityCard" : {
+        "type" : "object",
+        "properties" : {
+          "typeIdentityDocument" : {
+            "type" : "string",
+            "description" : "Тип документа удостоверяющего личность",
+            "example" : "1"
+          },
+          "dateOfIssue" : {
+            "type" : "string",
+            "description" : "Дата выдачи ДУЛ",
+            "format" : "date"
+          },
+          "serialIdentityCard" : {
+            "type" : "string",
+            "description" : "Серия документа",
+            "example" : "1"
+          },
+          "numberIedentityCard" : {
+            "type" : "string",
+            "description" : "Номер документ",
+            "example" : "1"
+          }
+        },
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/IndividualParams"
+        } ]
+      },
+      "IdentityCardCheckResult" : {
+        "type" : "object",
+        "properties" : {
+          "checkResult" : {
+            "maxLength" : 100,
+            "type" : "string",
+            "description" : "Результат проверки ДУЛ",
+            "example" : "Паспорт недействителен"
+          }
+        },
+        "example" : {
+          "checkResult" : "Паспорт недействителен"
+        },
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/IndividualParams"
+        } ]
+      }
+    }
+  }
+}
