@@ -1,0 +1,604 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ComplianceService</name>
+    </assembly>
+    <members>
+        <member name="T:ComplianceService.Attributes.ValidateModelStateAttribute">
+            <summary>
+            Model state validation attribute
+            </summary>
+        </member>
+        <member name="M:ComplianceService.Attributes.ValidateModelStateAttribute.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            Called before the action method is invoked
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:ComplianceService.Controllers.CheckContractorApiController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ComplianceService.Controllers.CheckContractorApiController.CheckEntrepreneur(System.Collections.Generic.List{ComplianceService.Models.IndividualParams})">
+            <summary>
+            Получить информацию о проверке ИП в сервисе Альфа-Банка
+            </summary>
+            <param name="body"></param>
+            <response code="200">Информация о проверке</response>
+            <response code="400">bad input parameter</response>
+        </member>
+        <member name="M:ComplianceService.Controllers.CheckContractorApiController.CheckIndividual(System.Collections.Generic.List{ComplianceService.Models.IndividualParams})">
+            <summary>
+            Получить информацию о проверке Физ. лица в сервисе Альфа-Банка
+            </summary>
+            <param name="body"></param>
+            <response code="200">Информация о проверке</response>
+            <response code="400">bad input parameter</response>
+        </member>
+        <member name="M:ComplianceService.Controllers.CheckContractorApiController.ChekOrganization(System.Collections.Generic.List{ComplianceService.Models.BaseParams})">
+            <summary>
+            Получить информацию о проверке Юридического лица в сервисе Альфа-Банка
+            </summary>
+            <param name="body"></param>
+            <response code="200">Информация о проверке</response>
+            <response code="400">bad input parameter</response>
+        </member>
+        <member name="T:ComplianceService.Controllers.CheckDocumentApiController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ComplianceService.Controllers.CheckDocumentApiController.CheckIdentityCard(System.Collections.Generic.List{ComplianceService.Models.IdentityCard})">
+            <summary>
+            Проверка клиента через сервис недействительных паспортов
+            </summary>
+            <param name="body"></param>
+            <response code="200">Информация о проверке</response>
+            <response code="400">bad input parameter</response>
+        </member>
+        <member name="T:ComplianceService.Filters.BasePathFilter">
+            <summary>
+            BasePath Document Filter sets BasePath property of Swagger and removes it from the individual URL paths
+            </summary>
+        </member>
+        <member name="M:ComplianceService.Filters.BasePathFilter.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="basePath">BasePath to remove from Operations</param>
+        </member>
+        <member name="P:ComplianceService.Filters.BasePathFilter.BasePath">
+            <summary>
+            Gets the BasePath of the Swagger Doc
+            </summary>
+            <returns>The BasePath of the Swagger Doc</returns>
+        </member>
+        <member name="T:ComplianceService.Filters.GeneratePathParamsValidationFilter">
+            <summary>
+            Path Parameter Validation Rules Filter
+            </summary>
+        </member>
+        <member name="M:ComplianceService.Filters.GeneratePathParamsValidationFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="operation">Operation</param>
+            <param name="context">OperationFilterContext</param>
+        </member>
+        <member name="M:ComplianceService.Models.BankApi.CheckIn.#ctor(System.String)">
+            <summary>
+            Название проверки
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.CheckIn.checkName">
+            <summary>
+            Название проверки
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.CheckIn.isToCall">
+            <summary>
+            Флаг необходимости осуществления проверки  ["true", "false", "0", "1"]
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.CheckOut.CheckName">
+            <summary>
+            Название проверки
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.CheckOut.IsToCall">
+            <summary>
+            Флаг необходимости осуществления проверки
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.CheckOut.CheckResult">
+            <summary>
+            Результат проверки
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.CheckOut.Matched">
+            <summary>
+            Cовпавшие теги
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.CheckOut.Comment">
+            <summary>
+            Комментарий к проверке
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.Matched.TagName">
+            <summary>
+            Имя совпавшего тега
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.ResultSet1.Idp">
+            <summary>
+            Код проверки
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.ResultSet1.Idr">
+            <summary>
+            Код результата
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.ResultSet1.Nms">
+            <summary>
+            Описание результата
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.ResultSet1.Chk">
+            <summary>
+            Результат отдельной проверки
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.ResultSet1.Atr">
+            <summary>
+            Атрибуты проверок
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.ResultSet2.Fnm">
+            <summary>
+            ФИО
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.ResultSet2.Dtbr">
+            <summary>
+            Дата рождение
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.ResultSet2.Ucd">
+            <summary>
+            Вид документа
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.ResultSet2.Ser">
+            <summary>
+            Серия документа
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.ResultSet2.Num">
+            <summary>
+            Номер документа
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.ResultSet2.Org">
+            <summary>
+            Кем выдан документ
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.ResultSet2.Opn">
+            <summary>
+            Дата выдачи документа
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.ResultSet2.Fior">
+            <summary>
+            СНИЛС
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.ResultSet2.Crf">
+            <summary>
+            ИНН
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.ResultSet2.Ban">
+            <summary>
+            Код запрета
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.ResultSet3.Fnm">
+            <summary>
+            ФИО
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.ResultSet3.Dtbr">
+            <summary>
+            Дата рождения
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.ResultSet3.Ucd">
+            <summary>
+            Вид документа
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.ResultSet3.Ser">
+            <summary>
+            Серия документа
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.ResultSet3.Num">
+            <summary>
+            Номер документа
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.ResultSet3.Org">
+            <summary>
+            Кем выдан документ
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.ResultSet3.Amr">
+            <summary>
+            Адрес регистрации
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.ResultSet3.Mr">
+            <summary>
+            Место рождения
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.ResultSet3.Crf">
+            <summary>
+            ИНН
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BankApi.ResultSet3.Ter">
+            <summary>
+            Признак террориста
+            </summary>
+        </member>
+        <member name="T:ComplianceService.Models.BaseParams">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.BaseParams.ExternalSystemCode">
+            <summary>
+            Код внешней системы
+            </summary>
+            <value>Код внешней системы</value>
+        </member>
+        <member name="P:ComplianceService.Models.BaseParams.Inn">
+            <summary>
+            ИНН
+            </summary>
+            <value>ИНН</value>
+        </member>
+        <member name="M:ComplianceService.Models.BaseParams.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:ComplianceService.Models.BaseParams.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:ComplianceService.Models.BaseParams.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:ComplianceService.Models.BaseParams.Equals(ComplianceService.Models.BaseParams)">
+            <summary>
+            Returns true if BaseParams instances are equal
+            </summary>
+            <param name="other">Instance of BaseParams to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:ComplianceService.Models.BaseParams.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:ComplianceService.Models.ContractorCheckResult">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.ContractorCheckResult.CheckName">
+            <summary>
+            Gets or Sets CheckName
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.ContractorCheckResult.Description">
+            <summary>
+            Gets or Sets Description
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.ContractorCheckResult.RiskCodes">
+            <summary>
+            Gets or Sets RiskCodes
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.ContractorCheckResult.IsSucces">
+            <summary>
+            dsdads
+            </summary>
+            <value>dsdads</value>
+        </member>
+        <member name="P:ComplianceService.Models.ContractorCheckResult.ContractorName">
+            <summary>
+            Gets or Sets ContractorName
+            </summary>
+        </member>
+        <member name="M:ComplianceService.Models.ContractorCheckResult.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:ComplianceService.Models.ContractorCheckResult.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:ComplianceService.Models.ContractorCheckResult.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:ComplianceService.Models.ContractorCheckResult.Equals(ComplianceService.Models.ContractorCheckResult)">
+            <summary>
+            Returns true if ContractorCheckResult instances are equal
+            </summary>
+            <param name="other">Instance of ContractorCheckResult to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:ComplianceService.Models.ContractorCheckResult.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:ComplianceService.Models.IdentityCard">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.IdentityCard.TypeIdentityDocument">
+            <summary>
+            Тип документа удостоверяющего личность
+            </summary>
+            <value>Тип документа удостоверяющего личность</value>
+        </member>
+        <member name="P:ComplianceService.Models.IdentityCard.DateOfIssue">
+            <summary>
+            Дата выдачи ДУЛ
+            </summary>
+            <value>Дата выдачи ДУЛ</value>
+        </member>
+        <member name="P:ComplianceService.Models.IdentityCard.SerialIdentityCard">
+            <summary>
+            Серия документа
+            </summary>
+            <value>Серия документа</value>
+        </member>
+        <member name="P:ComplianceService.Models.IdentityCard.NumberIedentityCard">
+            <summary>
+            Номер документ
+            </summary>
+            <value>Номер документ</value>
+        </member>
+        <member name="M:ComplianceService.Models.IdentityCard.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:ComplianceService.Models.IdentityCard.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:ComplianceService.Models.IdentityCard.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:ComplianceService.Models.IdentityCard.Equals(ComplianceService.Models.IdentityCard)">
+            <summary>
+            Returns true if IdentityCard instances are equal
+            </summary>
+            <param name="other">Instance of IdentityCard to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:ComplianceService.Models.IdentityCard.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:ComplianceService.Models.IdentityCardCheckResult">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.IdentityCardCheckResult.CheckResult">
+            <summary>
+            Результат проверки ДУЛ
+            </summary>
+            <value>Результат проверки ДУЛ</value>
+        </member>
+        <member name="M:ComplianceService.Models.IdentityCardCheckResult.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:ComplianceService.Models.IdentityCardCheckResult.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:ComplianceService.Models.IdentityCardCheckResult.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:ComplianceService.Models.IdentityCardCheckResult.Equals(ComplianceService.Models.IdentityCardCheckResult)">
+            <summary>
+            Returns true if IdentityCardCheckResult instances are equal
+            </summary>
+            <param name="other">Instance of IdentityCardCheckResult to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:ComplianceService.Models.IdentityCardCheckResult.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:ComplianceService.Models.IndividualParams">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.IndividualParams.FirstName">
+            <summary>
+            Gets or Sets FirstName
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.IndividualParams.MiddleName">
+            <summary>
+            Gets or Sets MiddleName
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.IndividualParams.LastName">
+            <summary>
+            Gets or Sets LastName
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Models.IndividualParams.DateBirthDay">
+            <summary>
+            Gets or Sets DateBirthDay
+            </summary>
+        </member>
+        <member name="M:ComplianceService.Models.IndividualParams.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:ComplianceService.Models.IndividualParams.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:ComplianceService.Models.IndividualParams.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:ComplianceService.Models.IndividualParams.Equals(ComplianceService.Models.IndividualParams)">
+            <summary>
+            Returns true if IndividualParams instances are equal
+            </summary>
+            <param name="other">Instance of IndividualParams to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:ComplianceService.Models.IndividualParams.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:ComplianceService.Program">
+            <summary>
+            Program
+            </summary>
+        </member>
+        <member name="M:ComplianceService.Program.Main(System.String[])">
+            <summary>
+            Main
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:ComplianceService.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            Create the web host builder.
+            </summary>
+            <param name="args"></param>
+            <returns>IWebHostBuilder</returns>
+        </member>
+        <member name="T:ComplianceService.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:ComplianceService.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="F:ComplianceService.Services.BankCheckService.WSCustomerComplianceCheckGet">
+            <summary>
+            Осуществление проверки блокировок по черным спискам
+            </summary>
+        </member>
+        <member name="F:ComplianceService.Services.BankCheckService.WSCustomerTerrorism">
+            <summary>
+            Проверка клиента на присутствие в базах, причастных к терроризму
+            </summary>
+        </member>
+        <member name="T:ComplianceService.Startup">
+            <summary>
+            Startup
+            </summary>
+        </member>
+        <member name="M:ComplianceService.Startup.#ctor(Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="env"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:ComplianceService.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:ComplianceService.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+            <param name="loggerFactory"></param>
+        </member>
+    </members>
+</doc>
